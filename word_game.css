@@ -1,0 +1,126 @@
+@-webkit-keyframes flip_tile {
+  0%  {-webkit-transform: scale(1,1);}
+  25% {-webkit-transform: scale(0.01,1);}
+
+  50% {
+        background-color:#f0de55;
+        -webkit-transform: scale(1,1);
+      }
+  75% { background-color: flip_color;
+        -webkit-transform: scale(0.01,1);
+      }
+         
+ 100% {       
+        -webkit-transform: scale(1,1);
+      }
+ }
+
+.child {
+ 	width: 100px;
+  height: 100px;
+  background:#9966FF;
+  cursor:crosshair;
+  margin: 5px;
+  line-height: 100px;
+  text-align: center;
+  display:inline-block;
+  min-width:100px;
+  min-height:50px;
+  white-space:normal;
+}
+
+.parent{
+  width:340px;
+  margin: auto;
+  background: #f9cae9;
+  text-align: center;
+  white-space:normal;
+  display:inline-block;
+  height:330px;
+  border-radius: 20px;
+  padding:5px;
+}
+
+.left_top{
+  border-top-left-radius: 20px;
+}
+        
+.right_top{
+  border-top-right-radius: 20px;
+}
+
+.left_bottom{
+  border-bottom-left-radius: 20px;
+}       
+
+.right_bottom{
+  border-bottom-right-radius: 20px;
+}
+
+.score_bar{
+  width: 100px;
+  height: 100px;
+  background:#e9df9a;
+  text-align: center;
+  color:#36d077;
+  margin-left: 2px;
+  display:inline-block;     
+}
+
+.image_div{
+  border-style: solid;
+  border-color:#1a63da;
+  height:200px;
+  width: 200px;
+  text-align: center;
+  float:left;
+}
+
+.div_btn{
+  height:50px;
+  width: 155px;
+  margin: 5px;
+  background: #ccb3b3;
+  vertical-align: center;
+  text-align: center;
+  display:inline-block;
+}
+
+.div_control_button{
+  width: 340px;
+  margin: 5px;
+  padding:5px;
+  background-color: #D8CEF6;
+  text-align: center;
+}
+
+.img_cls{   
+  height:200px;
+  width: 200px;
+}
+
+.div_info{
+  height:200px;
+  width:50;
+  float: right;
+  white-space:normal;
+  background-color: #cfcaf9;
+  border-radius: 20px;
+  display:block;
+  padding:10px;
+}
+
+.hint_box{
+  height:90px;
+  width: 205px;
+  margin-top: 10px;
+  background: #ccb3b3;
+  vertical-align: center;
+  text-align: center;
+  display:inline-block;
+}
+
+.tbl{
+  text-align: center;
+  margin: auto;
+}

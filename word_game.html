@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<HTML>
+	<title>Memorize Word!!</title>
+	<head>
+    <script type="text/javascript" src="./word_game.js"></script>
+	  <link rel="stylesheet" type="text/css" href="./word_game.css">
+	</head>
+	
+  <body bgcolor="#dbdbd2">
+    <table class="tbl">
+      <tr>
+        <td><div class="image_div"><img class="img_cls" id="img_box" src="./IW.png" alt="Sorry Image is not available!!"></div>
+          <div class="div_info">
+            <div class="score_bar left_top" style="cursor:not-allowed; color:blue;" id="score_bar" ><b>Score</b><br/>Total:<br/> <B>0</B> <br/> Word: <br/> <B>0</B> </div>
+            <div class="score_bar right_top" id="time_div" style="cursor:not-allowed;" ><b>Time</b><br/>Total:<br/><B>0</B><br/>Word:<br/><B>0</B></div>
+            <br/>
+            <div class="hint_box left_bottom right_bottom" id="hint_place" style="cursor:pointer;" onmouseover="show_hint()" onmouseout="hide_hint()"><br/><br/>Hint!!</div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=2>  
+		      <div id="parent_div" class="parent">
+			      <div class="left_top child" id="0" data-ans="n" onclick="check_me(this)">-</div>
+            <div class="child" id="1" data-ans="n" onclick="check_me(this)">-</div>
+            <div class="right_top child" id="2" data-ans="n" onclick="check_me(this)">-</div>
+            <div class="child" id="3" data-ans="n" onclick="check_me(this)">-</div>
+            <div class="child" id="4" data-ans="n" onclick="check_me(this)">-</div>
+            <div class="child" id="5" data-ans="n" onclick="check_me(this)">-</div>
+            <div class="left_bottom child" id="6" data-ans="n" onclick="check_me(this)">-</div>
+            <div class="child" id="7" data-ans="n" onclick="check_me(this)">-</div>
+            <div class="right_bottom child" id="8" data-ans="n" onclick="check_me(this)">-</div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=2 align="center">
+          <div class="div_control_button left_top left_bottom right_top right_bottom">
+            <div class="div_btn left_top left_bottom" style="cursor:pointer;" id="play_pause_btn" onclick="playpause()"><br/>Pause</div>
+            
+            <div class="div_btn right_top right_bottom" style="background:#82E660;cursor:pointer;" id="start_end_div" onclick="start_terminate()"><br>Start Game</div>
+          </div> 
+        </td> 
+      </tr>
+    </table>
+	</body>
+</HTML>
