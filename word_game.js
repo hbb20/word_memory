@@ -1,4 +1,4 @@
-		var word_list=["apple","steave","giraffe","cow"]; //Word list that will be comes
+		var word_list=["apple","steve","giraffe","cow"]; //Word list that will be comes
 		var number_of_tiles=9,	//Number of tiles in grid
 			current_character_number=0,
 			current_word_number=0,
