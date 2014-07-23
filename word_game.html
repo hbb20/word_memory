@@ -1,49 +1,61 @@
 <!DOCTYPE html>
-<HTML>
-	<title>Memorize Word!!</title>
+<html>
 	<head>
-    <script type="text/javascript" src="./word_game.js"></script>
-	  <link rel="stylesheet" type="text/css" href="./word_game.css">
+		<link rel="stylesheet" type="text/css" href="./new_css.css">
+		<script type="text/javascript" src="./word_game.js"></script
 	</head>
-	
-  <body bgcolor="#dbdbd2">
-    <table class="tbl">
-      <tr>
-        <td><div class="image_div"><img class="img_cls" id="img_box" src="./IW.png" alt="Sorry Image is not available!!"></div>
-          <div class="div_info">
-            <div class="score_bar left_top" style="cursor:not-allowed; color:blue;" id="score_bar" ><b>Score</b><br/>Total:<br/> <B>0</B> <br/> Word: <br/> <B>0</B> </div>
-            <div class="score_bar right_top" id="time_div" style="cursor:not-allowed;" ><b>Time</b><br/>Total:<br/><B>0</B><br/>Word:<br/><B>0</B></div>
-            <br/>
-            <div class="hint_box left_bottom right_bottom" id="hint_place" style="cursor:pointer;" onmouseover="show_hint()" onmouseout="hide_hint()"><br/><br/>Hint!!</div>
-          </div>
-        </td>
-      </tr>
+	<body bgcolor="#EEEEEE">
+		<div id="div_master" class="div_master">
+			<div id="div_left" class="div_left">
+				<div id="div_l_core" class="div_l_core">
+					<div id="div_lc_top" class="div_lc_top lc">
+						<div id="div_lct_image" class="div_lct_image">
+						<img class="img_cls" id="img_box" src="./IW.png" alt="Sorry Image is not available!!">
+						</div>
+						<div id="hint_place" class="div_lct_hint" style="cursor:pointer;" onmouseover="show_hint()" onclick="show_hint()" onmouseout="hide_hint()"><br/><font size="6px" color="white">Hint!!</font>
+						</div>	
+					</div>
+					<div id="div_lc_middle"	class="div_lc_middle lc">
+						<div id="div_lcm_progressBar" class="div_lcm_progressBar bar_animation">
+							<div id="div_pointer" class="div_pointer"></div>
+						</div>
+						<div id="div_lcm_indication" class="div_lcm_indication">
+							&nbsp;&nbsp;&nbsp; 10 &nbsp;&nbsp;&nbsp; 20 &nbsp;&nbsp;&nbsp; 30 &nbsp;&nbsp;&nbsp; 40 &nbsp;&nbsp;&nbsp; 50 &nbsp;&nbsp;&nbsp; 60 &nbsp;&nbsp;&nbsp; 70 &nbsp;&nbsp;&nbsp; 80 &nbsp;&nbsp;&nbsp; 90 &nbsp;&nbsp;&nbsp; 100
+						</div>
+					</div>
+					<div id="div_lc_bottom" class="div_lc_bottom lc">
+						<div id="0" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+						<div id="1" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+						<div id="2" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
 
-      <tr>
-        <td colspan=2>  
-		      <div id="parent_div" class="parent">
-			      <div class="left_top child" id="0" data-ans="n" onclick="check_me(this)">-</div>
-            <div class="child" id="1" data-ans="n" onclick="check_me(this)">-</div>
-            <div class="right_top child" id="2" data-ans="n" onclick="check_me(this)">-</div>
-            <div class="child" id="3" data-ans="n" onclick="check_me(this)">-</div>
-            <div class="child" id="4" data-ans="n" onclick="check_me(this)">-</div>
-            <div class="child" id="5" data-ans="n" onclick="check_me(this)">-</div>
-            <div class="left_bottom child" id="6" data-ans="n" onclick="check_me(this)">-</div>
-            <div class="child" id="7" data-ans="n" onclick="check_me(this)">-</div>
-            <div class="right_bottom child" id="8" data-ans="n" onclick="check_me(this)">-</div>
-          </div>
-        </td>
-      </tr>
+						<div id="3" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+						<div id="4" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+						<div id="5" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
 
-      <tr>
-        <td colspan=2 align="center">
-          <div class="div_control_button left_top left_bottom right_top right_bottom">
-            <div class="div_btn left_top left_bottom" style="cursor:pointer;" id="play_pause_btn" onclick="playpause()"><br/>Pause</div>
-            
-            <div class="div_btn right_top right_bottom" style="background:#82E660;cursor:pointer;" id="start_end_div" onclick="start_terminate()"><br>Start Game</div>
-          </div> 
-        </td> 
-      </tr>
-    </table>
+						<div id="6" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+						<div id="7" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+						<div id="8" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+					</div>
+				</div>
+			</div>
+			<div id="div_right" class="div_right">
+				<div id="div_r_top" class="div_r_top">
+					<div id="score_bar" class="div_rt_score"><b>Score<Br/><font size="8px" color="white">0</font><font size="5px" color="#E1E1E1"><br/><B>00:00:0</font></B>
+					</div>
+				</div>
+				<div id="div_r_bottom" class="div_r_bottom">
+					<div id="div_rb_counter" class="div_rb_counter rb">
+						<font color="#2E2E2E">Word Count<font><br/><font size="8px" color="white"><b> </b></font><font size="5px" color="#E1E1E1"></font>
+					</div>
+					<div	id="play_pause_btn" onclick="playpause()" class="div_rb_playpause rb">
+						<font color="#2E2E2E">Pause</font>
+					</div>
+					<div id="div_rb_quit" class="div_rb_quit rb" onclick="start_terminate()">
+						<font color="#2E2E2E">Start</font>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 	</body>
-</HTML>
+</html>
