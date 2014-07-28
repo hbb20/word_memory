@@ -1,6 +1,7 @@
-		var word_list=["apple","steve","giraffe","cow"]; //Word list that will be comes
+		var word_list=["apple","cigarette","steve","giraffe","cow"]; //Word list that will be comes
+		var mean_list=["A fruit,usually with red color....A fruit,usually with red color...A fruit,usually with red color....A fruit,usually with red color...A fruit,usually with red color","A small stick shaped object , used for smoking","Co-founder of Apple Inc.","An animal with tall nack","A holy animal for hindu, gives milk as well"];
 		var number_of_tiles=9,	//Number of tiles in grid
-			current_character_number=0,
+			current_character_number=0, 
 			current_word_number=0,
 			perfect_word,
 			flip_color,
@@ -11,7 +12,9 @@
 			word_time=0,
 			total_time=0,
 			my_timer,pointer,
-			play_state=-1;
+			play_state=-1,
+			last_start_time=0,
+			is_hint_open=false;
 
 		//This function Suffle the characters within word.
 		//"hellow" will be "olwehl" or "lhowel" or anithing.
@@ -92,7 +95,7 @@
         		flip_color='#D0A5A5';
         		break;
         	case "reset":
-        		flip_color="grey";
+        		flip_color="#6884CC";
         		break;
 
         	case "pause":
@@ -100,16 +103,19 @@
         		e.innerHTML="<br/>";
         		break;
         	case "hint":
-        		flip_color="#C0C0C0";
+        		flip_color="#64A55A";
         		break;
         	case "btn_pause":
         		flip_color="#ABD0A5"
         		break;
         	case "btn_play":
-        		flip_color="#D0A5A5"
+        		flip_color="#f0ad4e"
         		break;
         	case "btn_start":
-        		flip_color="#D0A5A5"
+        		flip_color="#ABD0A5"
+        		break;
+        	case "word_conter":
+        		flip_color="#e1e1e1"
         		break;
         	}
         
@@ -150,22 +156,25 @@
 		//will be calculated on bases of char_time_begin and char_time_end
 		function get_char_score(char_time_end,char_time_begin)
 		{
-			if((char_time_end-char_time_begin)<65)
-			{var char_score=100-((char_time_end-char_time_begin-15)/60*100);
-				return char_score; 
-			}
-			else return 10;
+			var diff=total_time-char_time_begin;
+			if(diff<=20)
+				return 100;
+			else if(diff<=38)
+				return 70;
+			else if(diff<=56)
+				return 30;
+			else
+				return 10;
+			
 		}
 
 		//loads a score on pointer 
 		function load_score_running()
 		{
 			var score_run=get_char_score(total_time,char_time_begin);
-			var e=document.getElementById("div_pointer");
+			var e=document.getElementById("hint_place");
 			score_run=Math.round(score_run);
-			if(score_run>100)
-				score_run=100;
-			//e.innerHTML=score_run;
+			
 		}
 
 		//When game is requested to pause, this function flip the tiles to blank
@@ -177,6 +186,7 @@
 			for(;i<number_of_tiles;i++)
 			{				
 				e=document.getElementById(id_list[i]);
+				e.style['-webkit-box-shadow'] = "none";
 				flip(e,"pause");
 			}
 		}
@@ -189,48 +199,31 @@
 			char_score=get_char_score(total_time,char_time_begin);
 			}
 			total_score+=Math.round(char_score);
+
 			update_time();
 		}
 
 		//Prepares the board for next character.
 		function prepare_board_for_next()
-		{
+		{	
 			current_character_number+=1;
 			var correct_position;
 			if(current_character_number<=perfect_word.length)
-			{	
+			{
 		  		var sub_word=perfect_word.slice(0,current_character_number);
 		  		var option_list=get_option_list_for(sub_word);
 		  		correct_position=option_list.indexOf(sub_word);
 		  		load_options(option_list,correct_position);
 				char_time_begin=total_time;
-				start_pointer_from_0();
+				last_start_time=total_time;
 			}	
 			else
 			{	
 				load_word();
 			}
 		}
-		function hide_pointer()
-		{var e=document.getElementById("div_pointer");
-			e.style.visibility="hidden";
-		}
-		function start_pointer_from_0()
-		{	var time_req=6;
-
-			var e=document.getElementById("div_pointer");
-			e.style.visibility="visible";
-			var new_node=e.cloneNode(true);
-			e.parentNode.replaceChild(new_node,e);
-			var target=document.getElementById("div_pointer");
-			if (target.style.webkitAnimationName !== 'time_pointer') {
-                target.style.webkitAnimationName = 'time_pointer';
-                target.style.webkitAnimationDuration = '5s';
-                target.style.webkitAnimationTimingFunction= "linear";
-                target.style.webkitAnimationDelay= "1.5s";
-            }
-
-		}
+		
+		
 		//updates the time, sets minute,second and mili-sec for word and entire game.
 		function update_time()
 		{	
@@ -247,10 +240,28 @@
 			if(t_sec<10)
 				t_sec="0"+t_sec;
 			load_score_running();
-			document.getElementById("score_bar").innerHTML='<b>Score<Br/><font size="8px" color="white">'+total_score+'</font><font size="5px" color="#E1E1E1"><br/><B>'+t_min+':'+t_sec+':'+t_msec+'</font></B>';
+			update_progress_bar();
+			var printable_total_score;
+			if(total_score<10)
+				printable_total_score="000"+total_score;
+			else if(total_score<100)
+				printable_total_score="00"+total_score;
+			else if(total_score<1000)
+				printable_total_score="0"+total_score;
+			else
+				printable_total_score=total_score;
+			document.getElementById("time_box").innerHTML=t_min+':'+t_sec+':'+t_msec;
+			document.getElementById("score_box").innerHTML=printable_total_score;
 		}
 
-
+		//adds the activeness to progress bar
+		function add_active_to_progressbar()
+		{
+			document.getElementById("bar_one").className+=" progress-bar-striped active";
+			document.getElementById("bar_two").className+=" progress-bar-striped active";
+			document.getElementById("bar_three").className+=" progress-bar-striped active";
+			document.getElementById("bar_four").className+=" progress-bar-striped active";
+		}
 		//Starts the timer if it was paused
 		function start_timer()
 		{	
@@ -258,36 +269,55 @@
 			{
 			play_state=1;
 			my_timer=setInterval(function(){update_time()},100);
+			add_active_to_progressbar();
 			}
 		}
 
+
+		//this function stops the time bar from moving strips
+		function remove_active_of_progressbar()
+		{
+			document.getElementById("bar_one").className="progress-bar progress-bar-success my_bar";
+			document.getElementById("bar_two").className="progress-bar progress-bar-info my_bar";
+			document.getElementById("bar_three").className="progress-bar progress-bar-warning  my_bar"
+			document.getElementById("bar_four").className="progress-bar progress-bar-danger  my_bar"
+		}
 		//pauses the timer if it was running.
 		function pause_timer()
 		{	if(play_state==1 ||  play_state==-1)
 			{
 			play_state=0;
 			clearInterval(my_timer);
+			reset_progress_bar();
+			remove_active_of_progressbar();
 			}
 		}
 
+		//reset the progress bar to 100 points
+		 function reset_progress_bar(){
+ 			//clearInterval(my_timer);
+ 			
+			document.getElementById("bar_two").style.width="28%";
+			document.getElementById("bar_three").style.width="28%";
+			document.getElementById("bar_one").style.width="28%";
+			document.getElementById("bar_four").style.width="16%";
+		 }
 		//Filp the image div and set the new  image for new word.
-		function set_image(file_name)
+		function show_word()
 		{
-			var e=document.getElementById("img_box");
-			flip(e,"false");
-			var file_location="./"+file_name+".gif";
-			e.src=file_location;
 			var hint_place=document.getElementById("hint_place");
-			flip(hint_place,"true");
-			show_hint();
+			flip(hint_place,"hint");
+			show_hint(3);
 			pause_it();
-			setTimeout(function(){hide_hint();var e=document.getElementById("play_pause_btn");flip(e,"play");e.style.background="#D0A5A5";play_it();},3000);
+			play_state=-1;
+			setTimeout(function(){play_state=0;hide_hint();var e=document.getElementById("play_pause_btn");e.disabled=false;play_it();},3000);
 		}
 
 		//Resumes the game, prepare the board again, and starts the timer.
 		 function play_it()
 		 {
 		 	start_timer();
+
 		 	prepare_board_for_next();
 		 		
 		 }
@@ -297,8 +327,8 @@
 		 function pause_it()
 		 {
 		 		pause_timer();
-		 		hide_pointer();
 		 		pause_flip_all_tiles();
+
 		 }
 
 
@@ -312,13 +342,14 @@
 		 		if(play_state==0)
 		 		{	
 		 			flip(e,"btn_play")
-		 			e.innerHTML="Pause";
+		 			e.innerHTML=' <font size="5px"><span class="glyphicon glyphicon-pause" ></span><font color="#2E2E2E">Pause</font></font>';
 		 			play_it();	
+		 			
 		 		}	
 		 		else
 		 		{
 		 			flip(e,"btn_pause")
-		 			e.innerHTML="Play";
+		 			e.innerHTML='<font size="5px"><span class="glyphicon glyphicon-play" ></span><font color="#2E2E2E">Play</font></font>';
 		 			pause_it();
 		 		}
 		 	}
@@ -331,14 +362,20 @@
 
 		 //If game is in playing mode. It Displays a correct word on hint tile. 
 		 //If game is paused , Game is not suppose to showup a word.
-		 function show_hint()
+		 function show_hint(seconds)
 		 {	
-		 	var e=document.getElementById("hint_place");
-		 	if(play_state!=0 && perfect_word!=null)
-		 	e.innerHTML='<font color="#2E2E2E">Word is:</font><br/><font size="6px" color="white"><b>'+perfect_word+'</b></font>';
+		 	var e=document.getElementById("hint_place");		 		
+		 
+		 	if(play_state!=0 && perfect_word!=null) 
+		 	{	e.style.lineHeight="40px";
+		 		e.innerHTML='<font size="5px" color="silver">Word is:</font><br/><font size="8px" color="white"><b>'+perfect_word+'</b></font>';
+			}
 		 	else if(play_state==0)
-		 	e.innerHTML="<font color='#2E2E2E'><br/>Smart player:)</font>";
-
+		 	{
+		 	e.style.lineHeight="40px";
+		 	e.innerHTML="<font size='5px' color='white'><br/>Game Paused <br/><small>Click 'play' button to resume</small></font>";
+		 	}
+			setTimeout(function(){hide_hint();},(seconds)*1000);
 		 }
 
 		 //Flip the hint tile and hide the hint on it.
@@ -347,26 +384,31 @@
 		 	if(play_state!=-1)
 		 	{
 			var e=document.getElementById("hint_place");
-		 	e.innerHTML='<font size="6px" color="white">Hint!!</font><br/>(Forgot spelling?)';		 	
+			e.style.lineHeight="20px";
+		 	e.innerHTML='<font size="4px" color="silver"><p style="margin-bottom:5px;">Spell a word that stands for following meaning</font><br/></p><font size="5px" color="white">'+mean_list[current_word_number-1]+'</font><font color="#e1e1e1" size="4px"><br/><div id="show_hint_div class="show_word_box"> <button id="show_word_box" type="button" class="btn btn-warning btn-lg show_word_box" " onclick="show_hint(3);" onmouseover="show_hint(3)"><font size="4px><span class="glyphicon glyphicon-info-sign" ></span><font color="#2E2E2E">Find your word here...</font></font></button></div>';		 	
 		 	flip(e,"hint");
+
 		 	}
 		 }
 
-
+		
 		//When some tile is clicked,it checks if the clicked tile is correct tile or not.
 		//If its correct, will flip true and new set of character will be loaded 
 		//if its not correct then, it will flip false and set red.
  		function check_me(e)
  		{
+ 			
  			if(play_state==1)
  			{
  			if (e.getAttribute("data-ans")=="y")
  				{
+ 				
  				flip(e,"true");
  				setTimeout(function(e) {
  				   update_score();
                    prepare_board_for_next();
                    char_time_end=total_time;
+
                 },450);
 
  				}
@@ -374,6 +416,7 @@
  			{
  				flip(e,"false");
  			}
+ 			
  		}
  		}
 
@@ -383,9 +426,7 @@
  		{
  			current_character_number=0;
  			play_state=-1;
- 			var e=document.getElementById("play_pause_btn");
- 			flip(e,"hint");
- 			document.getElementById("play_pause_btn").style.background="#ACACAC";
+ 			document.getElementById("play_pause_btn").disabled=true;
  			word_time=0;
  			word_score=0;
  			//console.log("Word index is "+current_word_number);
@@ -394,7 +435,7 @@
  			//start_timer();
 		  	perfect_word=word_list[current_word_number++].trim().toUpperCase();
 		  	update_word_count();
-		  	set_image(perfect_word);
+		  	show_word();
 		  	current_character_number=0;
  		}
 
@@ -403,17 +444,17 @@
  		function update_word_count()
  		{
  			var e=document.getElementById("div_rb_counter");
- 			flip(e,"pause");
- 			e.innerHTML='<font color="#2E2E2E">Word Count<font><br/><font size="8px" color="white"><b>'+current_word_number+'</b></font><font size="5px" color="#E1E1E1">/'+word_list.length+'</font>';
+ 			flip(e,"word_conter");
+ 			e.innerHTML='<font color="gray" size="3px">Word</font><font size="6px" color="#404040"> '+current_word_number+'</font><font size="5px" color="gray">/'+word_list.length+'</font></div>';
  		}
 
  		//Start up the game, and changes the button with display name "Terminate"
  		function start()
  		{	pause_timer();
  			total_score=0;
- 			var e=document.getElementById("div_rb_quit");
- 				e.background="#F6CECE";
- 				e.innerHTML="Quit";
+ 			var e=document.getElementById("div_rb_start");
+ 				e.disabled=true;
+ 				document.getElementById("quit_btn").disabled=false;
  				flip(e,"btn_start");
  				console.log("Started");
  				load_word();
@@ -426,31 +467,56 @@
  			location.reload();
  		}
 
- 		//function that responses when start_terminate button clicked
- 		//If game is not yet started, 
- 		function start_terminate()
- 		{
- 			if(current_word_number==0)
- 				start();
- 			else
- 				terminate();
- 		}
- 		var original_color;
+ 		
  		//apllies hover effect to child
  		function child_hover(e)
  		{
  			if(play_state==1)
  			{
  				e.style.color="#E2E2E2";
- 				e.style.textDecoration='underline';
+ 				e.style['-webkit-box-shadow'] = "2px 2px 3px #2E2e2e";
  			}
  		}	
 
+ 		//Removes the hover effect after mouse is out
  		function child_mouse_out(e)
  		{
- 			if(play_state==1)
- 			{	e.style.color="white";	
- 				e.style.textDecoration='none'
- 			}
+ 	
+ 				e.style.color="white";	
+ 				e.style.textDecoration='none';
+ 				e.style['-webkit-box-shadow'] = "none";
+
+ 			
  		}
 		
+		//set the progress bar as per the time goes on.
+		function update_progress_bar()
+			{
+				var diff=total_time-char_time_begin;
+				var bar,percent;
+				if(diff<18)
+				{
+					bar=document.getElementById("bar_one");
+					document.getElementById("bar_two").style.width="28%";
+					document.getElementById("bar_three").style.width="28%";
+					percent=30*(17-diff)/18;
+					console.log(percent);
+					bar.style.width=percent+"%";
+				}
+				else if(diff<=36)
+				{
+					diff=diff-18;
+					bar=document.getElementById("bar_two");
+					document.getElementById("bar_three").style.width="28%";
+					percent=30*(18-diff)/18;
+					bar.style.width=percent+"%";
+				}
+
+				else if(diff<=54)
+				{
+					diff=diff-36;
+					bar=document.getElementById("bar_three");
+					percent=30*(18-diff)/18;
+					bar.style.width=percent+"%";
+				}
+			}

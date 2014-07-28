@@ -1,103 +1,186 @@
-div.div_master{background:#e1e1e1;
+div.div_master{
+	background:#e1e1e1;
 	text-align: center;
-	height: 454px;
-	width: 532px;
 	margin: auto;
+	margin-top: 30px;
+	width:800px;
+	
 }
 	div.div_left{
-		min-width: 376px;
-		height:454px;
-		float:left;
+		width: 730px;
+		height: 100%;
 		background: #E1E1E1;
+		margin: auto;
 	
 	}
 		div.div_l_core{
-			height:414px;
-			width:376px;
-			margin: 15px;
+
+			width:100%;
+			margin: auto;
+			
+			margin-top: 10px;
 			background:#E1E1E1;
 			padding-top: 8px;
+
 		}
 		div.lc{
 			margin-top: 2px;
 			margin-bottom: 2px;
+
 		}
+		
+		div.header_main{
+			
+			
+			width: 95%;
+			margin: auto;
+			height: 40px;
+
+		}
+			.header_blk{
+				display: inline-block;
+				width:30%;
+				height:40px;
+				margin: auto;
+				margin-bottom: 3px;
+			}
+
+			.header_box{
+				display: inline;
+				float: right;
+				
+
+
+			}
+			div.time_blk{
+			
+			height: 25px;
+			float:left;
+
+
+			}
+			div.time_box{
+				width: 80%;
+				height: 100%;
+				float:right;
+				text-align: left;
+			}
+
+			div.score_blk{
+				float: left;
+				margin-left: 45px;
+			}
+			div.score_box{
+				width: 80%;
+				height: 100%;
+				text-align: left;
+			}
+
+			div.word_count_box{
+				float:right;
+				height: 25px;
+				text-align: right;
+				margin-top: 8px;
+
+			}
 			div.div_lc_top{
-				height: 110px;
 				width:100%;
 				background: #E1E1E1;				
 				float:top;
+				margin: auto;
+				margin-bottom: 0px;
 			}
-				div.div_lct_image{
-					height: 110px;
-					width: 118px;
-					margin-left: 7px;
-					background: silver;
-					float:left;
-				}
-					.img_cls{   
- 					 height:110px;
-  				 width: 100%;
+			
+  				div.div_lct_core{
+  					width: 95%;
+  					background: inherit;
+  					margin:auto;
+
   				}
 				div.div_lct_hint{
-					height:110px;
-					width:240px;
-					margin-left: 4px;
-					margin-right: 2px;
-					float:left;
-					background:silver;
-					line-height: 40px;
+					height: 175px;
+					width:100%;
+					padding:15px;
+					background:#8464C9;
+					line-height: 120px;
+					display: inline-block;
+
+				}
+
+				.show_word_box{
+					margin: auto;
+					float: bottom;
+					margin-bottom: 3px;
+					cursor: pointer;
 				}
 			div.div_lc_middle{
 				height: 30px;
 				width:100%;
-				background: #E1E1E1;
+				background: #E2E2E2;
 				text-align: center;
+				margin-top: 0;
 			}
-				div.div_lcm_progressBar{
-					width:96.5%;
-					height:4px;
-					background: grey;
-					margin: auto;
-					margin-top: 3px;
+
+			div.progress_line{
+				height:10px;
+				width:95%;
+				background: #e2e2e2;
+				border-radius: 0px;
+				margin:auto
+			}
+				div.my_bar{
+					width:28%;
+					height:10px;
 				}
-					div.div_pointer{
-					
-					height: 100%;
-					width:6px;
-					background: white;
-					margin-left: 15px;		
-					text-align: center;
-					visibility: hidden;
-					}
 
+			
 
-				div.div_lcm_indication{
+				div.indicator
+				{
+					font-size: 17px;
+				}
+				div.div_lcm_indication_parent{
 					width:100%;
 					height:15px;
-					background: #E1E1E1;
+					background:inherit;
 					margin: auto;
+					line-height: 10px;
+					font-size: 14px;
+					color:gray;
+					margin-top: 3px;
 				}
 			div.div_lc_bottom{
 				background: #E1E1E1;
-				width:100%;
-				height: 256px;
+				width:95%;
 				padding-top: 7px;
+				margin: auto;
+				margin-top: 0px;
 
 			}
 
 				div.child{
 					background: grey;
-					width: 118px;
-					height: 80px;
+					width: 226px;
+					height: 115px;
 					display: inline-block;
-					margin-top: 3px;
+					
 					color:white;
-					line-height: 80px;
+					line-height: 100px;
 					cursor: crosshair;
-
+					border-spacing: 2px;
+					margin:1px;
+					margin-top: 5px;
+					font-size: 22px;
 				}
-
+		div.control_bar{
+			width:95%;
+			background: inherit;
+			margin: auto;
+			margin-top: 20px;
+			line-height: 100%;
+			margin-bottom: 18px;
+			
+		}
 
 				
 	div.div_right{
@@ -114,12 +197,7 @@ div.div_master{background:#e1e1e1;
 			width: 100%;
 			padding-top: 25px;
 		}
-			div.div_rt_score{
-				width: 80%;
-				height: 110px;
-				background: grey;
-				cursor: not-allowed;
-			}
+			
 		div.div_r_bottom{
 			background: #E1E1E1;
 			width: 100%;
@@ -129,31 +207,45 @@ div.div_master{background:#e1e1e1;
 			height: 260px;
 			padding-top: 8px;
 		}
-		div.rb{
-			margin-top: 3px;
-			background-color: #ACACAC;
-			height: 80px;
-			line-height: 80px;
+		button.rb{
+			margin-top: 0px;
+			height: 50px;
 			text-align: center;
+			width: 118px;
+			margin: 1px;
+			height: 80px;
 		}
-			div.div_rb_counter{
-				width: 80%;
-				line-height: 40px;
-				cursor: not-allowed;
 		
-			}
-			div.div_rb_playpause{
-				width: 65%;
-				cursor: pointer;
-			}
-			div.div_rb_quit{
-				width: 50%;
+			
+			button.div_rb_start{
 				cursor:pointer;
-				background: #ABD0A5;
+				display: inline-block;
+				
+				background-color:#ABD0A5;
+				width:226px;
+				box-shadow: 15px 15px 15px #red;
+				
 			}
-			div.div_rb_quit:hover{
-				background: #ABf0c5;
+
+			button.div_rb_playpause{
+				cursor:pointer;
+				display: inline-block;
+				
+				width:226px;
+				box-shadow: 15px 15px 15px #red;
+			
 			}
+
+			button.div_rb_quit{
+				cursor:pointer;
+				display: inline-block;
+				
+				background-color:#d9534f;
+				width:226px;
+				box-shadow: 15px 15px 15px #red;
+				
+			}
+			
 		
 
 @-webkit-keyframes flip_tile {

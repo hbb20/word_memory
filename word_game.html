@@ -2,58 +2,87 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="./word_game.css">
+		<link rel="stylesheet" href="./dist/css/bootstrap.css">
 		<script type="text/javascript" src="./word_game.js"></script
 	</head>
 	<body bgcolor="#EEEEEE">
 		<div id="div_master" class="div_master">
 			<div id="div_left" class="div_left">
 				<div id="div_l_core" class="div_l_core">
-					<div id="div_lc_top" class="div_lc_top lc">
-						<div id="div_lct_image" class="div_lct_image">
-						<img class="img_cls" id="img_box" src="./IW.png" alt="Sorry Image is not available!!">
+					<div id="header" class="header_main">
+						<div id="time_block" class="time_blk header_blk"><br/>
+							<font size="4px" color="gray"> <span class="glyphicon glyphicon-time"></span>
+							<div id="time_box" class="time_box header_box"> 00:00:0</div></font>
 						</div>
-						<div id="hint_place" class="div_lct_hint" style="cursor:pointer;" onmouseover="show_hint()" onclick="show_hint()" onmouseout="hide_hint()"><br/><font size="6px" color="white">Hint!!</font>
-						</div>	
+							
+						<div id="score_block" class="score_blk header_blk">
+							<font size="5px" color="#404040"><span class="glyphicon glyphicon-screenshot"></span></font><font size="6px" color="#404040">
+							<div id="score_box" class="score_box header_box"> 0000</div></font>
+						</div>
+
+						<div id="div_rb_counter" class="word_count_box header_box"><font color="gray" size="3px"></font><font size="6px" color="#404040"> </font><font size="3px" color="gray"></font></div>
+
+
 					</div>
-					<div id="div_lc_middle"	class="div_lc_middle lc">
-						<div id="div_lcm_progressBar" class="div_lcm_progressBar bar_animation">
-							<div id="div_pointer" class="div_pointer"></div>
+					<div id="div_lc_top" class="div_lc_top lc">
+						<div id="div_lct_core" class="div_lct_core">
+						
+						<div id="hint_place" class="div_lct_hint"><font size="10px" color="white">Word Sprint Game!!!</font>
 						</div>
-						<div id="div_lcm_indication" class="div_lcm_indication">
-							&nbsp;&nbsp;&nbsp; 10 &nbsp;&nbsp;&nbsp; 20 &nbsp;&nbsp;&nbsp; 30 &nbsp;&nbsp;&nbsp; 40 &nbsp;&nbsp;&nbsp; 50 &nbsp;&nbsp;&nbsp; 60 &nbsp;&nbsp;&nbsp; 70 &nbsp;&nbsp;&nbsp; 80 &nbsp;&nbsp;&nbsp; 90 &nbsp;&nbsp;&nbsp; 100
+
+						
 						</div>
+					</div>
+					<div id="div_lc_middle"	class="lc div_lc_middle">
+						<div id="progress_line" class="progress progress_line">  
+    						<div id="bar_four" class="progress-bar progress-bar-danger  my_bar" style="width:16%;"> </div>
+    						<div id="bar_three" class="progress-bar progress-bar-warning  my_bar">    </div>
+    						<div id="bar_two" class="progress-bar progress-bar-info my_bar" >    </div>
+    						<div id="bar_one" class="progress-bar progress-bar-success my_bar">    </div>
+  						</div>
+						
+						<div id="div_lcm_indication_parent" class="div_lcm_indication_parent">
+							<div id="div_lcm_indication" class="div_lcm_indication">
+								<div style="display:inline-block;align:center;width:16%;text-align:center indicator">10</div>
+    							<div style="display:inline-block;align:center;width:28%;text-align:center indicator">30</div>
+    							<div style="display:inline-block;align:center;width:28%;text-align:center indicator">70</div>
+    							<div style="display:inline-block;align:center;width:26%;text-align:center indicator">100</div>
+
+							</div>
+						</div>	
+						
 					</div>
 					<div id="div_lc_bottom" class="div_lc_bottom lc">
-						<div id="0" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
-						<div id="1" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
-						<div id="2" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+						<div id="0" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">&nbsp;</font></div>
+						<div id="1" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">&nbsp;</font></div>
+						<div id="2" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="gray">&nbsp;</font></div>
 
-						<div id="3" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
-						<div id="4" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
-						<div id="5" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+						<div id="3" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="gray">&nbsp;</font></div>
+						<div id="4" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="gray">&nbsp;</font></div>
+						<div id="5" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="gray">&nbsp;</font></div>
 
-						<div id="6" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
-						<div id="7" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
-						<div id="8" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">1</font></div>
+						<div id="6" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="gray">&nbsp;</font></div>
+						<div id="7" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="gray">&nbsp;</font></div>
+						<div id="8" class="child" data-ans="n" onclick="check_me(this)" onmouseover="child_hover(this);" onmouseout="child_mouse_out(this);"><font color="grey">&nbsp;</font></div>
+					</div>
+					<div id="control_bar" class="control_bar">
+						
+						<button id="div_rb_start" type="button" class="btn btn-success btn-lg div_rb_start rb" onclick="start()">
+ 							 <font size="5px"><span class="glyphicon glyphicon-off" ></span><font color="#2E2E2E"> Start</font></font>
+						</button>
+
+						<button id="play_pause_btn" type="button" class="btn btn-warning btn-lg div_rb_playpause rb" onclick="playpause()" disabled=true>
+							<font size="5px">	
+ 							 <span class="glyphicon glyphicon-pause" ></span><font color="#2E2E2E">Pause</font></font>
+						</button>
+
+						<button id="quit_btn" type="button" class="btn btn-danger btn-lg div_rb_quit rb" onclick="terminate()" disabled=true>
+
+ 							<font size="5px">	 <span class="glyphicon glyphicon-remove" ></span><font  color="#2E2E2E">Quit</font></font>
+						</button>
 					</div>
 				</div>
-			</div>
-			<div id="div_right" class="div_right">
-				<div id="div_r_top" class="div_r_top">
-					<div id="score_bar" class="div_rt_score"><b>Score<Br/><font size="8px" color="white">0</font><font size="5px" color="#E1E1E1"><br/><B>00:00:0</font></B>
-					</div>
-				</div>
-				<div id="div_r_bottom" class="div_r_bottom">
-					<div id="div_rb_counter" class="div_rb_counter rb">
-						<font color="#2E2E2E">Word Count<font><br/><font size="8px" color="white"><b> </b></font><font size="5px" color="#E1E1E1"></font>
-					</div>
-					<div	id="play_pause_btn" onclick="playpause()" class="div_rb_playpause rb">
-						<font color="#2E2E2E">Pause</font>
-					</div>
-					<div id="div_rb_quit" class="div_rb_quit rb" onclick="start_terminate()">
-						<font color="#2E2E2E">Start</font>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 		
