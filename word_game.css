@@ -2,66 +2,53 @@ div.div_master{
 	background:#e1e1e1;
 	text-align: center;
 	margin: auto;
-	margin-top: 30px;
-	width:800px;
-	
+	margin-top: 10px;
+	width:650px;	
 }
 	div.div_left{
-		width: 730px;
-		height: 100%;
+		width: 650px;
+		height: 90%;
 		background: #E1E1E1;
 		margin: auto;
-	
 	}
 		div.div_l_core{
-
 			width:100%;
 			margin: auto;
-			
 			margin-top: 10px;
 			background:#E1E1E1;
 			padding-top: 8px;
-
 		}
+
 		div.lc{
 			margin-top: 2px;
 			margin-bottom: 2px;
-
 		}
 		
-		div.header_main{
-			
-			
+		div.header_main{			
 			width: 95%;
 			margin: auto;
-			height: 40px;
-
 		}
 			.header_blk{
 				display: inline-block;
 				width:30%;
-				height:40px;
 				margin: auto;
+				height: 35px;
 				margin-bottom: 3px;
 			}
 
 			.header_box{
 				display: inline;
 				float: right;
-				
-
-
 			}
+
 			div.time_blk{
-			
 			height: 25px;
 			float:left;
-
-
 			}
+
 			div.time_box{
 				width: 80%;
-				height: 100%;
+				height: 90%;
 				float:right;
 				text-align: left;
 			}
@@ -72,7 +59,7 @@ div.div_master{
 			}
 			div.score_box{
 				width: 80%;
-				height: 100%;
+				height: 90%;
 				text-align: left;
 			}
 
@@ -80,9 +67,9 @@ div.div_master{
 				float:right;
 				height: 25px;
 				text-align: right;
-				margin-top: 8px;
-
+				margin-top: 4px;
 			}
+
 			div.div_lc_top{
 				width:100%;
 				background: #E1E1E1;				
@@ -95,8 +82,8 @@ div.div_master{
   					width: 95%;
   					background: inherit;
   					margin:auto;
-
   				}
+
 				div.div_lct_hint{
 					height: 175px;
 					width:100%;
@@ -104,7 +91,6 @@ div.div_master{
 					background:#8464C9;
 					line-height: 120px;
 					display: inline-block;
-
 				}
 
 				.show_word_box{
@@ -112,9 +98,11 @@ div.div_master{
 					float: bottom;
 					margin-bottom: 3px;
 					cursor: pointer;
+					margin-top: 5px;
 				}
+
 			div.div_lc_middle{
-				height: 30px;
+				height: 20px;
 				width:100%;
 				background: #E2E2E2;
 				text-align: center;
@@ -133,12 +121,14 @@ div.div_master{
 					height:10px;
 				}
 
-			
-
 				div.indicator
 				{
-					font-size: 17px;
+					font-size: 15px;
+					margin: 0px;
+					float:left;
+					margin-top: -1px;
 				}
+
 				div.div_lcm_indication_parent{
 					width:100%;
 					height:15px;
@@ -147,49 +137,47 @@ div.div_master{
 					line-height: 10px;
 					font-size: 14px;
 					color:gray;
-					margin-top: 3px;
+					margin-top: 0px;
 				}
+
+				div.div_lcm_indication{
+					width: 95%;
+					margin-top: 0px;
+					margin: auto;
+					padding: 0px;
+				}
+
 			div.div_lc_bottom{
 				background: #E1E1E1;
 				width:95%;
-				padding-top: 7px;
+				padding-top: 0px;
 				margin: auto;
 				margin-top: 0px;
-
 			}
 
 				div.child{
 					background: grey;
-					width: 226px;
-					height: 115px;
+					width: 201px;
+					height: 90px;
 					display: inline-block;
-					
 					color:white;
-					line-height: 100px;
+					line-height: 90px;
 					cursor: crosshair;
 					border-spacing: 2px;
 					margin:1px;
 					margin-top: 5px;
 					font-size: 22px;
 				}
+
 		div.control_bar{
 			width:95%;
 			background: inherit;
 			margin: auto;
-			margin-top: 20px;
+			margin-top: 10px;
 			line-height: 100%;
 			margin-bottom: 18px;
-			
 		}
 
-				
-	div.div_right{
-		background: #E1E1E1;
-		width:125px;
-		height:454px;
-		float:left;
-
-	}
 		div.div_r_top{
 			background: #E1E1E1;
 			height: 142px;
@@ -207,47 +195,39 @@ div.div_master{
 			height: 260px;
 			padding-top: 8px;
 		}
+
 		button.rb{
 			margin-top: 0px;
 			height: 50px;
 			text-align: center;
 			width: 118px;
 			margin: 1px;
-			height: 80px;
+			height: 60px;
 		}
-		
 			
 			button.div_rb_start{
 				cursor:pointer;
-				display: inline-block;
-				
+				display: inline-block;		
 				background-color:#ABD0A5;
-				width:226px;
+				width:200px;
 				box-shadow: 15px 15px 15px #red;
-				
 			}
 
 			button.div_rb_playpause{
 				cursor:pointer;
 				display: inline-block;
-				
-				width:226px;
+				width:200px;
 				box-shadow: 15px 15px 15px #red;
-			
 			}
 
 			button.div_rb_quit{
 				cursor:pointer;
 				display: inline-block;
-				
 				background-color:#d9534f;
-				width:226px;
+				width:200px;
 				box-shadow: 15px 15px 15px #red;
-				
 			}
 			
-		
-
 @-webkit-keyframes flip_tile {
   0%  {-webkit-transform: scale(1,1);}
   25% {-webkit-transform: scale(0.01,1);}
@@ -265,8 +245,3 @@ div.div_master{
       }
  }
 
- @-webkit-keyframes time_pointer{
- 	0% {-webkit-transform: translate(325px,0px);}
- 	
- 	100%{}
- }
