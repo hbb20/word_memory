@@ -1,0 +1,8 @@
+title: Word memory
+description: A HTML + JavaScript + CSS program, that help to memorize you a word.
+google_analytics: harshbbhakta@gmail.com
+show_downloads: true
+theme: jekyll-theme-midnight
+
+gems:
+  - jekyll-mentions
